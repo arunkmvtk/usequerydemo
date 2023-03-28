@@ -5,9 +5,10 @@ import './RQFetching.css'
 
 const RQFetching = () => {
 
-    const { isLoading, error, data } = useQuery('users', () =>
-        axios.get('https://jsonplaceholder.typicode.com/users')
-    )
+    const fetchUsers = () => {return  axios.get('https://jsonplaceholder.typicode.com/users')}
+    
+    const { isLoading, error, data } = useQuery('users', fetchUsers)
+    
     // console.log("data",data?.data);
     return (
         <>
