@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 import { useQuery } from 'react-query';
+import './RQFetching.css'
 
 const RQFetching = () => {
 
@@ -14,12 +15,20 @@ const RQFetching = () => {
             <div>
                 {isLoading && <h1>Loading...</h1>}
                 {error && <h1>{error.message}</h1>}
-                {
-                    data?.data.map(user => (
-                        <div key={user.id}>
-                            {user.name}
-                        </div>
-                    ))
+                {<table>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                    </tr>
+                   { data?.data.map(user => (
+                    <tr>
+                        <td>{user.id}</td>
+                        <td>{user.name}</td>
+                        <td>{user.email}</td>
+                    </tr>
+                    ))}
+                </table>
                 }
             </div>
         </>
